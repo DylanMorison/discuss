@@ -1,3 +1,5 @@
+'use server';
+
 /**
  * This file contains Next.js server actions.
  *
@@ -21,19 +23,18 @@
  *
  * 'use client': On the other hand, 'use client' is like gearing up for a solo mission where you,
  * the client, are in charge. This hook indicates that the component or logic should run exclusively
- * in the client's browser. It's perfect for things that are specific to the individual user's
+ * in the client's bowser. It's perfect for things that are specific to the individual user's
  * experience, like UI state, animations, or client-side interactivity. Imagine you're Anakin
  * Skywalker from "Star Wars", piloting your starfighter; you need real-time, client-side reactions
  * to navigate the battle.
  */
-"use server"
 
-import * as auth from "~/auth"
+import * as auth from '@/auth';
 
 export async function signIn() {
-	return auth.signIn("github")
+  return auth.signIn('github');
 }
 
 export async function signOut() {
-	return auth.signOut()
+  return auth.signOut();
 }
