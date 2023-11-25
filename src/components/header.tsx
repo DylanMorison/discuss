@@ -5,15 +5,10 @@ import {
   NavbarContent,
   NavbarItem,
   Input,
-  Button,
-  Avatar,
 } from '@nextui-org/react';
-import { auth } from '@/auth';
-import * as actions from '@/actions';
+import HeaderAuth from '@/components/header-auth';
 
-export default async function Header() {
-  const session = await auth();
-
+export default function Header() {
   return (
     <Navbar className="shadow mb-6">
       <NavbarBrand>
@@ -21,33 +16,14 @@ export default async function Header() {
           Discuss
         </Link>
       </NavbarBrand>
-
       <NavbarContent justify="center">
         <NavbarItem>
           <Input />
         </NavbarItem>
       </NavbarContent>
+
       <NavbarContent justify="end">
-        {session?.user ? (
-          <Avatar src={session.user.image ?? ''} />
-        ) : (
-          <>
-            <NavbarItem>
-              <form action={actions.signIn}>
-                <Button type="submit" color="secondary" variant="bordered">
-                  Login
-                </Button>
-              </form>
-            </NavbarItem>
-            <NavbarItem>
-              <form action={actions.signIn}>
-                <Button type="submit" color="secondary" variant="flat">
-                  Register
-                </Button>
-              </form>
-            </NavbarItem>
-          </>
-        )}
+        <HeaderAuth />
       </NavbarContent>
     </Navbar>
   );
